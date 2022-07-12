@@ -1,0 +1,23 @@
+--BEGINNING
+Interesting article: https://bit.ly/3bVMhZF
+
+--Article: Denormalized vs Normalized Data
+https://betterprogramming.pub/normalization-vs-denormalization-7470bb20618d
+
+--Run only 1 model in the console
+dbt run --select
+
+--Materialize a table instead of a View
+{{ config (
+    materialized="table"
+)}}
+
+--Generate documentation for your model
+dbt docs generate
+
+--Build dependencies between models - MODULARITY
+select * from {{ ref('stg_customers')}}
+
+
+
+
