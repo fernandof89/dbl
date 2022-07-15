@@ -18,6 +18,14 @@ dbt docs generate
 --Build dependencies between models - MODULARITY
 select * from {{ ref('stg_customers')}}
 
+--Link Sources in the model
+from {{ source('jaffle_shop', 'customers') }}
 
-
+--Interesting command learn at DBL Course -> The COALESCE function takes a number of arguments and returns the first non-NULL argument. In case all arguments are NULL, the COALESCE function returns NULL.
+--Article: https://www.mysqltutorial.org/mysql-coalesce/#:~:text=Introduction%20to%20MySQL%20COALESCE%20function.%20The%20following%20illustrates,arguments%20are%20NULL%2C%20the%20COALESCE%20function%20returns%20NULL.
+COALESCE(value1,value2,...);
+SELECT COALESCE(NULL, 0);  -- 0
+SELECT COALESCE(NULL, NULL); -- NULL;
+--To substitute the NULL value in the result set, you can use the COALESCE function as follows:
+SELECT customerName, city, COALESCE(state, 'N/A'), country FROM customers;
 
