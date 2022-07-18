@@ -29,3 +29,17 @@ SELECT COALESCE(NULL, NULL); -- NULL;
 --To substitute the NULL value in the result set, you can use the COALESCE function as follows:
 SELECT customerName, city, COALESCE(state, 'N/A'), country FROM customers;
 
+--Example of testing over a YML file.
+models:
+  - name: stg_customers
+    columns: 
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+          
+--Interesting command learn at DBT course -> The HAVING function. The difference between the having and where clause in SQL is that the where clause cannot be used with aggregates, but the having clause can.
+--Article: https://www.geeksforgeeks.org/having-vs-where-clause-in-sql/#:~:text=The%20difference%20between%20the%20having%20and%20where%20clause,aggregated%20data.%20Let%20us%20consider%20below%20table%20%E2%80%98Marks%E2%80%99.
+SELECT Student, Score FROM Marks WHERE Score >=40
+SELECT Student, SUM(score) AS total FROM Marks GROUP BY Student
+HAVING total > 70
