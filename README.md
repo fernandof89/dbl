@@ -1,2 +1,2 @@
 # dbl
-Commands for using DBL Cloud
+Commands for using DBT Cloud
