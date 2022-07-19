@@ -43,3 +43,6 @@ models:
 SELECT Student, Score FROM Marks WHERE Score >=40
 SELECT Student, SUM(score) AS total FROM Marks GROUP BY Student
 HAVING total > 70
+
+--Link to a doc file on a YML file
+description: '{{ doc("order_status")}}'
